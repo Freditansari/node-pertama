@@ -2,6 +2,7 @@ const express = require('express'); //==> beri tahu node js perlu express
 const app = express(); // ==> start express
 const port = process.env.PORT || 3000; //==> deklarasi port yang di buka 3000 atau dideklarasi dari environment variable
 
+app.set('view engine', 'ejs');
 
 const patient =[{ //==> deklarasi array object patient
     name: 'Fredy', 
@@ -26,6 +27,12 @@ app.get('/patients', (req, res)=>{ //==> deklarasi rest-api end-point patients
 
 app.get('/', (req, res) => { //==> deklarasi rest-api / (root)
     res.send('Hello World!'); //==> kembalikan string hello world
+});
+
+app.get('/hello-world', (req, res) => {
+
+    res.render('index');
+    
 });
 
 app.listen(port, () => { //==> suruh node js untuk mendengarkan port akses sesuai variable port
